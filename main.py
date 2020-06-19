@@ -43,13 +43,13 @@ def joinLesson(driver, lessonName):
   time.sleep((random.randint(30,50))/10)
   emailinput = driver.find_element_by_css_selector("input[type='email']")
   emailinput.click()
-  emailinput.send_keys(os.getenv("schoolMail"))
+  emailinput.send_keys(os.getenv("schoolMail"))#Your email to join google meets
   time.sleep((random.randint(5,20))/10)
   emailinput.send_keys(Keys.RETURN)
   time.sleep((random.randint(30,50))/10)
   passinput = driver.find_element_by_css_selector("input[type='password']")
   passinput.click()
-  passinput.send_keys(os.getenv("schoolMailPassword"))
+  passinput.send_keys(os.getenv("schoolMailPassword"))#Your password to join google meets
   time.sleep((random.randint(5,20))/10)
   passinput.send_keys(Keys.RETURN)
   time.sleep((random.randint(30,50))/10)
