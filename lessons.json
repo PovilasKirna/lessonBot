@@ -9,6 +9,21 @@
             "Name" : "Lithuanian-SL",
             "URL" : "https://meet.google.com/mpx-ofzo-vuu?authuser=1",
             "Code" : "mpx-ofzo-vuu"
+        },
+        {
+            "Name" : "CuraPersonalis1",
+            "URL" : "http://meet.google.com/wpe-vbwr-iji",
+            "Code" : "wpe-vbwr-iji"
+        },
+        {
+            "Name" : "CuraPersonalis2",
+            "URL" : "http://meet.google.com/dnd-zkqs-dzy",
+            "Code" : "dnd-zkqs-dzy"
+        },
+        {
+            "Name" : "CuraPersonalis3",
+            "URL" : "http://meet.google.com/suw-pwjp-kxc",
+            "Code" : "suw-pwjp-kxc"
         }
     ]
 }

@@ -2,12 +2,12 @@ import json
 import time
 import random
 import os
-
+ 
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-    
+ 
 def initiateDriver():
   opt = Options()
   opt.add_argument("--disable-infobars")
@@ -20,10 +20,10 @@ def initiateDriver():
       "profile.default_content_setting_values.geolocation": 1, 
       "profile.default_content_setting_values.notifications": 1 
     })
-
+ 
   return webdriver.Chrome("/Users/Povilas/Documents/GitHub/chromedriver", options=opt)
-  
-    
+ 
+ 
 def joinLesson(driver, lessonName):
   lesson_url = ""
   lesson_code = ""
@@ -33,8 +33,8 @@ def joinLesson(driver, lessonName):
           if lesson["Name"] == lessonName:
               lesson_url = lesson["URL"]
               lesson_code = lesson["Code"]
-              
-              
+ 
+ 
   driver.get(lesson_url)
   time.sleep((random.randint(30,50))/10)
   driver.find_element_by_xpath("/html/body/div[1]/c-wiz/div/div[2]/div/div/span").click()
@@ -60,16 +60,16 @@ def joinLesson(driver, lessonName):
   codeinput.send_keys(lesson_code)
   time.sleep((random.randint(30,50))/10)
   driver.find_element_by_xpath("/html/body/div[1]/div[3]/div/div[2]/span/div/div[4]/div[2]/div/span").click()
-  time.sleep((random.randint(50,70))/10)
-  driver.find_element_by_xpath("/html/body/div[1]/c-wiz/div/div/div[4]/div[3]/div/div[2]/div/div/div[1]/div[1]/div[3]/div[1]/div/div/div/span/span/div/div[1]/div").click()
   time.sleep((random.randint(10,50))/10)
-  driver.find_element_by_xpath("/html/body/div[1]/c-wiz/div/div/div[4]/div[3]/div/div[2]/div/div/div[1]/div[1]/div[3]/div[2]/div").click()
-  time.sleep((random.randint(30,50))/10)
-  driver.find_element_by_xpath("/html/body/div[1]/c-wiz/div/div/div[4]/div[3]/div/div[2]/div/div/div[2]/div/div[2]/div/div[1]/div[1]/span").click()
+  driver.find_elements_by_xpath("//div[@jsshadow]")[0].click()
+  time.sleep((random.randint(50,70))/10)
+  driver.find_elements_by_xpath("//div[@jsshadow]")[1].click()
+  time.sleep((random.randint(10,50))/10)
+  driver.find_elements_by_xpath("//div[@jsshadow]")[3].click()
   time.sleep((random.randint(30,50))/10)
   print("Successfuly joined the lesson!")
-  
-  
+ 
+ 
 def main():
   t = time.localtime()
   current_time = time.strftime("%H:%M:%S", t)
@@ -78,9 +78,20 @@ def main():
     current_time = time.strftime("%H:%M:%S", t)
     print(current_time)
     time.sleep(1)
-    if current_time == "09:00:00":#-------------- time when to join the lesson
+    if current_time == "08:00:00":#-------------- time when to join the lesson
       driver = initiateDriver()
-      joinLesson(driver, "Mathematics")
+      joinLesson(driver, "CuraPersonalis1")
+    elif current_time == "09:15:00":#-------------- time when to join the lesson
+      driver.quit()
+      driver = initiateDriver()
+      joinLesson(driver, "CuraPersonalis2")
+    elif current_time == "10:45:00":#-------------- time when to join the lesson
+      driver.quit()
+      driver = initiateDriver()
+      joinLesson(driver, "CuraPersonalis3")
+  driver.quit()
+
+  
   
 if __name__ == "__main__":
   load_dotenv()
